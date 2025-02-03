@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 import React from "react";
 
 // 懒加载
-const Home = React.lazy(() => import("@/views/home/Home"));
+const Home = React.lazy(() => import("@/views/home"));
 const Entire = React.lazy(() => import("@/views/entire/Entire"));
 const Detail = React.lazy(() => import("@/views/detail/Detail"));
 
