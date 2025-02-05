@@ -3,13 +3,18 @@ import HomeBanner from "./c-cpns/home-banner";
 import { HomeWrapper } from "./style";
 import { fetchHomeDataAction } from "@/store/modules/home";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import SectionHeader from "@/components/section-header";
 import { Button } from "antd";
-import SectionRooms from "@/components/section-rooms";
+import HomeSectionV1 from "./c-cpns/home-section-v1";
+// import HomeSectionV3 from "./c-cpns/home-section-v3";
+import HomeSectionV2 from "./c-cpns/home-section-v2";
 
 const Home = memo(() => {
-  const { goodPriceInfo } = useSelector(
-    (state) => ({ goodPriceInfo: state.home.goodPriceInfo }),
+  const { goodPriceInfo, highScoreInfo, discountInfo } = useSelector(
+    (state) => ({
+      goodPriceInfo: state.home.goodPriceInfo,
+      highScoreInfo: state.home.highScoreInfo,
+      discountInfo: state.home.discountInfo,
+    }),
     shallowEqual
   );
 
@@ -24,11 +29,11 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        <SectionHeader title={goodPriceInfo.title}></SectionHeader>
-        <SectionRooms
-          roomList={goodPriceInfo.list}
-          itemWidth="25%"
-        ></SectionRooms>
+        <HomeSectionV1 infoData={discountInfo}></HomeSectionV1>
+        <HomeSectionV2 infoData={highScoreInfo} />
+        <HomeSectionV2 infoData={goodPriceInfo} />
+        {/* <HomeSectionV2 infoData={goodPriceInfo} /> */}
+
         <Button>111</Button>
       </div>
     </HomeWrapper>
